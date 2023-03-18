@@ -394,3 +394,204 @@ int main()
     }
     return 0;
 }
+
+worksheet-04
+3.#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *start=NULL;
+void insert_rear()
+{
+    struct node *new_node,*cur=start;
+    new_node=(struct node*)malloc(sizeof(struct node));
+    printf("\n enter the data :");
+    scanf("%d",&new_node->data);
+    new_node->next=NULL;
+    if(start==NULL)
+        start=new_node;
+    else
+    {
+        while(cur->next!=NULL){
+        cur=cur->next;}
+    cur->next=new_node;
+    }
+
+    printf("\n node inserted:%d->",new_node->data);
+}
+void display()
+{
+    struct node *cur=start;
+    if(start==NULL)
+        printf("\n list is empty");
+    else
+        {
+            while(cur!=NULL)
+                {
+            printf("%d->",cur->data);
+            cur=cur->next;
+                }
+        }
+}
+void sorted_insert()
+{
+    int new_value;
+    struct node *p,*q;
+    p=(struct node*)malloc(sizeof(struct node));
+    printf("\n enter the new value:");
+    scanf("%d",&p->data);
+    if(start==NULL)
+    {
+        start=p;
+        p->next=NULL;
+    }
+    q=start;
+    while(q!=NULL && q->next->data<=p->data)
+    {
+        q=q->next;
+    }
+    q->next=p;
+    p->next=q->next->next;
+
+}
+void delete_duplicates()
+{
+    struct node *prev,*p;
+    if(start==NULL||start->next==NULL)
+    {
+        return;
+    }
+    prev=start;
+    p=start->next;
+    while(prev->next!=NULL)
+    {
+        if(prev->data==p->data)
+        {
+            prev->next=p->next;
+            free(p);
+            p=prev->next;
+        }
+        else
+        {
+            prev=p;
+            p=p->next;
+        }
+    }
+}
+int doS()
+{
+struct node*p,*q;
+p=q=start;
+while (p!=NULL&&p->next!= NULL)
+{
+p = p->next->next ;
+q = q->next;
+}
+printf("The value you were looking for is %d", q->data);
+return 0;
+}
+void store()
+{
+    struct node *head=NULL,*main=NULL,*temp1,*temp2;
+    struct node *cur=start;
+    struct node *new_node=(struct node*)malloc(sizeof(struct node));
+    while(cur!=NULL)
+    {
+        struct node *new_node=(struct node*)malloc(sizeof(struct node));
+        new_node->data=cur->data;
+        if(cur->data<0)
+        {
+            temp1=head;
+            if(head==NULL)
+            {
+                head=new_node;
+                new_node->next=NULL;
+            }
+            else{
+                while(temp1->next!=NULL)
+                {
+                    temp1=temp1->next;
+                }
+                temp1->next=new_node;
+                new_node->next=NULL;
+            }
+        }
+        else{
+
+            if(main==NULL)
+            {
+                main=new_node;
+                new_node->next=NULL;
+            }
+            else{
+                    temp2=main;
+                while(temp2->next!=NULL)
+                {
+                    temp2=temp2->next;
+                }
+                temp2->next=new_node;
+                new_node->next=NULL;
+            }
+        }
+        cur=cur->next;
+    }
+    temp1=head;
+    temp2=main;
+    printf("\n the negative list is");
+    if(head==NULL)
+    {
+        printf("\n list of negative integers is empty");
+    }
+    else{
+            temp1=head;
+
+        while(temp1!=NULL)
+        {
+            printf("%d->",temp1->data);
+            temp1=temp1->next;
+        }
+    }
+    printf("\n the positive list is");
+    if(main==NULL)
+    {
+        printf("\n list of positive integers in empty");
+    }
+    else{
+        temp2=main;
+        while(temp2!=NULL)
+        {
+            printf("%d->",temp2->data);
+            temp2=temp2->next;
+        }
+    }
+}
+void main()
+{
+    int ch;
+    while(1)
+    {
+        printf("\n 1:insert rear,2:display,3:sorted insert,4:delete duplicates,5:dos,6:store");
+        printf("\n enter your choice");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:insert_rear();
+            break;
+            case 2:display();
+            break;
+            case 3:sorted_insert();
+            break;
+            case 4:delete_duplicates();
+            break;
+            case 5:doS();
+            break;
+            case 6:store();
+            break;
+            default:exit(0);
+        }
+    }
+}
+
