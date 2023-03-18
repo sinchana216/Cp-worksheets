@@ -396,6 +396,53 @@ int main()
 }
 
 worksheet-04
+
+
+1.void sort(int newval)
+{
+    struct node *p,*q;
+    p=(struct node *)malloc(sizeof(struct node));
+    p->data=newval;
+    if(start==NULL)
+    {
+          //insert at first position
+        start=p;
+        p->next=NULL;
+    }
+    else
+    {
+    q=start;
+    while((q->data<newval)&&(q->next->data<=newval)&&(q!=NULL))
+    { q=q->next; }
+    p->next=q->next;
+    q->next=p;
+    return;
+    }
+}
+void delete_duplicates()
+{
+    struct node *prev,*p;
+    if(start==NULL||start->next==NULL)
+    {
+        return;
+    }
+    prev=start;
+    p=start->next;
+    while(prev->next!=NULL)
+    {
+        if(prev->data==p->data)
+        {
+            prev->next=p->next;
+            free(p);
+            p=prev->next;
+        }
+        else
+        {
+            prev=p;
+            p=p->next;
+        }
+    }
+}
 3.#include<stdio.h>
 #include<stdlib.h>
 struct node
