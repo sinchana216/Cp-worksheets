@@ -960,6 +960,461 @@ void main()
     }
     printf("%d",len);
 }
+3.1.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 10
+int stack[MAX];
+int stack1[MAX];
+int top=-1;
+int top1=-1;
+void push(int data)
+{
+
+    if(top==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top=top+1;
+     stack[top]=data;
+    }
+}
+int pop(int stack[])
+{
+    int temp;
+    if(top==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        temp=stack[top];
+        top--;
+        return temp;
+    }
+}
+void display()
+{
+    int temp;
+    temp=top;
+    while(temp!=-1)
+    {
+        printf("%d ",stack[temp]);
+        temp--;
+    }
+}
+void push1(int data)
+{
+
+    if(top1==MAX-1)
+    {
+        printf("\n satck is full");
+
+    }
+    else
+    {
+     top1++;
+     stack1[top1]=data;
+    }
+}
+int pop1()
+{
+    int temp;
+    if(top1==-1)
+    {
+        return;
+    }
+    else
+    {
+        temp=stack1[top1];
+        top1--;
+        return temp;
+    }
+}
+void display1()
+{
+    int temp;
+    temp=top1;
+    if(temp==-1)
+    {
+        printf("\n stack1 is empty");
+    }
+    else{
+    while(temp!=-1)
+    {
+        printf("%d ",stack1[temp]);
+        temp--;
+    }
+}
+}
+void main()
+{
+    int key,val,ch,n,i=0,j=0;
+    printf("\n enter the number of elements to be entered in the stack");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&ch);
+        push(ch);
+    }
+    display();
+    for(j=0;j<n;j++)
+   {
+       val=pop(stack);
+       push1(val);
+
+   }
+   printf("\n");
+    display1();
+    printf("\n enter the value to be be entered at bottom");
+    scanf("%d",&key);
+    push(key);
+    for(i=0;i<n;i++)
+    {
+        key=pop1();
+        push(key);
+    }
+    printf("\n");
+display();
+
+}
+
+
+3.2.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 10
+int stack[MAX],s1[MAX],s2[MAX],s3[MAX];
+int top=-1,top1=-1,top2=-1,top3=-1;
+void push(int data)
+{
+
+    if(top==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top=top+1;
+     stack[top]=data;
+    }
+}
+int pop()
+{
+    int temp;
+    if(top==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        temp=stack[top];
+        top--;
+        return temp;
+    }
+}
+void display()
+{
+    int temp;
+    temp=top;
+    while(temp!=-1)
+    {
+        printf("%d ",stack[temp]);
+        temp--;
+    }
+}
+void push1(int data)
+{
+
+    if(top1==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top1=top1+1;
+     s1[top1]=data;
+    }
+}
+int pop1()
+{
+    int temp=top1;
+    int tem;
+    if(top1==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s1[top1];
+        top1--;
+        return tem;
+    }
+}
+
+void push2(int data)
+{
+
+    if(top2==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top2=top2+1;
+     s2[top2]=data;
+    }
+}
+int pop2()
+{
+    int temp=top2,tem;
+    if(top2==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s2[top2];
+        top2--;
+        return tem;
+    }
+}
+
+void push3(int data)
+{
+
+    if(top3==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top3=top3+1;
+     s3[top3]=data;
+    }
+}
+int pop3()
+{
+    int temp=top3,tem;
+    if(top3==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s3[top3];
+        top3--;
+        return tem;
+    }
+}
+void main()
+{
+    int n,ch,val,k,i=0;
+    printf("\n enter the value of n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\n enter the data");
+        scanf("%d",&ch);
+        push(ch);
+    }
+    display();
+    printf("\n enter the number first elements you want to reverse");
+    scanf("%d",&k);
+    for(i=0;i<n-k;i++)
+    {
+        push1(pop());
+    }
+    for(i=n-k;i<n;i++)
+    {
+        push2(pop());
+    }
+    for(i=0;i<k;i++)
+    {
+        push3(pop2());
+    }
+    for(i=0;i<k;i++)
+    {
+        push(pop3());
+    }
+    for(i=0;i<n-k;i++)
+    {
+        push(pop1());
+    }
+    display();
+}
+3.2.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 10
+int stack[MAX],s1[MAX],s2[MAX],s3[MAX];
+int top=-1,top1=-1,top2=-1,top3=-1;
+void push(int data)
+{
+
+    if(top==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top=top+1;
+     stack[top]=data;
+    }
+}
+int pop()
+{
+    int temp;
+    if(top==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        temp=stack[top];
+        top--;
+        return temp;
+    }
+}
+void display()
+{
+    int temp;
+    temp=top;
+    while(temp!=-1)
+    {
+        printf("%d ",stack[temp]);
+        temp--;
+    }
+}
+void push1(int data)
+{
+
+    if(top1==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top1=top1+1;
+     s1[top1]=data;
+    }
+}
+int pop1()
+{
+    int temp=top1;
+    int tem;
+    if(top1==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s1[top1];
+        top1--;
+        return tem;
+    }
+}
+
+void push2(int data)
+{
+
+    if(top2==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top2=top2+1;
+     s2[top2]=data;
+    }
+}
+int pop2()
+{
+    int temp=top2,tem;
+    if(top2==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s2[top2];
+        top2--;
+        return tem;
+    }
+}
+
+void push3(int data)
+{
+
+    if(top3==MAX-1)
+    {
+        printf("\n stack is full");
+
+    }
+    else
+    {
+     top3=top3+1;
+     s3[top3]=data;
+    }
+}
+int pop3()
+{
+    int temp=top3,tem;
+    if(top3==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        tem=s3[top3];
+        top3--;
+        return tem;
+    }
+}
+void main()
+{
+    int n,ch,val,k,i=0;
+    printf("\n enter the value of n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\n enter the data");
+        scanf("%d",&ch);
+        push(ch);
+    }
+    display();
+    printf("\n enter the number first elements you want to reverse");
+    scanf("%d",&k);
+    for(i=0;i<k;i++)
+    {
+        push1(pop());
+    }
+    for(i=0;i<k;i++)
+    {
+        push2(pop1());
+    }
+
+    for(i=0;i<k;i++)
+    {
+        push(pop2());
+    }
+
+    display();
+}
+
 
 
 
