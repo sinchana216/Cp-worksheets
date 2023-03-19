@@ -782,6 +782,67 @@ void main()
 }
 
 worksheet:05
+
+1.#include<stdio.h>
+#define MAX 50
+int s[MAX];
+int top1=-1,top2=MAX;
+void push1(int d)
+{
+    if(top1<top2)
+    {
+        top1++;
+        s[top1]=d;
+    }
+    else
+        printf("\n stack is full");
+}
+void push2(int d)
+{
+    if(top2<top1)
+    {
+        top2--;
+        s[top2]=d;
+    }
+    else
+        printf("\n stack is full");
+}
+void pop1()
+{
+    if(top1==-1)
+    {
+        printf("\n stack is empty");
+    }
+    else
+    {
+        printf("element being popped is %d",s[top1]);
+        top1=top1-1;
+    }
+}
+void pop2()
+{
+    if(top2==MAX)
+    {
+        printf("\n stack is empty");
+    }
+    else{
+        printf("\n the element being popped is %d",s[top2]);
+        top2=top2-1;
+    }
+}
+void main()
+{
+    push1(10);
+    push1(20);
+    pop1();
+    push2(30);
+    push2(40);
+    pop2();
+    pop1();
+    push1(50);
+}
+
+
 2.
 #include<stdio.h>
 int f(int n)
